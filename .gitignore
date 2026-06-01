@@ -1,0 +1,72 @@
+# ====================================================================
+# Compilación de C++ (Binarios, Objetos y Librerías)
+# ====================================================================
+# Prerrequisitos de construcción
+*.d
+*.o
+*.obj
+*.gch
+*.pch
+
+# Archivos compilados finales (Ejecutables y librerías)
+*.exe
+*.out
+*.app
+*.so
+*.dylib
+*.dll
+*.lib
+*.a
+
+# Carpetas de salida por defecto (CMake / Make / Visual Studio)
+[Bb]uild/
+[Bb]in/
+[Oo]bj/
+[X_x]64/
+[X_x]86/
+GeneratedFiles/
+
+# ====================================================================
+# Específico de Vulkan / Shaders
+# ====================================================================
+# IGNORAR los shaders ya compilados en formato binario SPIR-V
+*.spv
+
+# NOTA: Los archivos fuente de los shaders (.vert, .frag, .comp, .geom) 
+# SÍ deben subirse. Solo ignoramos el resultado del compilador (glslc / dxc).
+
+# ====================================================================
+# Herramientas de Construcción e IDEs
+# ====================================================================
+# CMake
+CMakeCache.txt
+CMakeFiles/
+CMakeSettings.json
+cmake_install.cmake
+Makefile
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.sln
+*.vcxproj
+*.vcxproj.filters
+
+# CLion / JetBrains
+.idea/
+cmake-build-*/
+
+# Visual Studio Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# ====================================================================
+# Sistema Operativo y Temporales
+# ====================================================================
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
