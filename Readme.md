@@ -1,4 +1,4 @@
-# Proyecto Animación
+# Vulkan Animation
 
 Este proyecto es una aplicación gráfica en Vulkan que implementa animaciones de figuras articuladas.
 
@@ -37,7 +37,7 @@ Para compilar y ejecutar directamente desde la terminal, puedes usar el target e
 ```bash
 cmake --build --preset win-debug --target run
 ```
-*(Nota sobre los Shaders)*: Los shaders `.vert` y `.frag` ubicados en `Project7/shaders/` se compilan automáticamente a `.spv` gracias al Vulkan SDK detectado.
+*(Nota sobre los Shaders)*: Los shaders `.vert` y `.frag` ubicados en `VulkanAnimation/shaders/` se compilan automáticamente a `.spv` en la carpeta de salida `bin/shaders/` gracias al Vulkan SDK detectado. Esto permite que el ejecutable los encuentre de forma portable sin requerir archivos de recursos de Windows.
 
 ## Solución de Problemas Frecuentes
 
