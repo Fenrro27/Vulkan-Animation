@@ -4,6 +4,7 @@
 #include <GLFW/glfw3.h>
 #include <vulkan/vulkan.h>
 #include <vector>
+#include <string>
 #include "CAVertexBuffer.h"
 #include "CAIndexBuffer.h"
 #include "CAUniformBuffer.h"
@@ -111,7 +112,7 @@ private:
 	VkSurfaceFormatKHR chooseSwapSurfaceFormat(const std::vector<VkSurfaceFormatKHR>& availableFormats);
 	VkExtent2D chooseSwapExtent(const VkSurfaceCapabilitiesKHR& capabilities);
 	VkShaderModule createShaderModule(const std::vector<char>& code);
-	std::vector<char> getFileFromResource(int resource);
+	std::vector<char> readFile(const std::string& filename);
 	VkFormat findDepthFormat();
 	uint32_t findMemoryType(uint32_t typeFilter, VkMemoryPropertyFlags properties);
 };

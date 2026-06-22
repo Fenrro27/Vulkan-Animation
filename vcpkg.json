@@ -1,0 +1,9 @@
+{
+  "name": "proyecto-animacion",
+  "version": "1.0.0",
+  "dependencies": [
+    "glfw3",
+    "glm"
+  ],
+  "builtin-baseline": "30d7c1678dd97d3501ff5e7a786b014ded607860"
+}

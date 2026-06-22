@@ -1,6 +1,6 @@
 #pragma once
 
-#include <glm\common.hpp>
+#include <glm/glm.hpp>
 #include <array>
 
 struct CAVertex 

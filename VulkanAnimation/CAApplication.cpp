@@ -2,7 +2,7 @@
 #include <windows.h>
 #include <iostream>
 #include <vector>
-#include <glm/common.hpp>
+#include <glm/glm.hpp>
 
 //
 // FUNCIÓN: CAApplication::run()

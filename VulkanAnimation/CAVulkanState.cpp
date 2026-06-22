@@ -3,9 +3,8 @@
 #include "CAModel.h"
 #include "CAVertex.h"
 #include "CATransform.h"
-#include "resource.h"
-#include <windows.h>
-#include <glm/common.hpp>
+#include <fstream>
+#include <glm/glm.hpp>
 #include <iostream>
 #include <vector>
 
@@ -1121,7 +1120,7 @@ void CAVulkanState::recreateSwapChain()
 //
 void CAVulkanState::createVertexShaderStageCreateInfo(VkShaderModule* vertShaderModule, VkPipelineShaderStageCreateInfo* vertShaderStageInfo)
 {
-	std::vector<char> vertShaderCode = getFileFromResource(IDR_HTML1);
+	std::vector<char> vertShaderCode = readFile("shaders/vert.spv");
 
 	*vertShaderModule = createShaderModule(vertShaderCode);
 
@@ -1139,7 +1138,7 @@ void CAVulkanState::createVertexShaderStageCreateInfo(VkShaderModule* vertShader
 //
 void CAVulkanState::createFragmentShaderStageCreateInfo(VkShaderModule* fragShaderModule, VkPipelineShaderStageCreateInfo* fragShaderStageInfo)
 {
-	std::vector<char> fragShaderCode = getFileFromResource(IDR_HTML2);
+	std::vector<char> fragShaderCode = readFile("shaders/frag.spv");
 
 	*fragShaderModule = createShaderModule(fragShaderCode);
 
@@ -1522,22 +1521,19 @@ VkShaderModule CAVulkanState::createShaderModule(const std::vector<char>& code)
 }
 
 //
-// FUNCIÓN: CAVulkanState::getFileFromResource(int resource)
-//
-// PROPÓSITO: Extrae el contenido de un fichero incluido como recurso de la aplicación
-//
-std::vector<char> CAVulkanState::getFileFromResource(int resource)
+// FUNCIÓN: CAVulkanState::readFile(const std::string& filename)
+std::vector<char> CAVulkanState::readFile(const std::string& filename)
 {
-	HRSRC shaderHandle = FindResource(NULL, MAKEINTRESOURCE(resource), RT_HTML);
-	HGLOBAL shaderGlobal = LoadResource(NULL, shaderHandle);
-	LPCTSTR shaderPtr = static_cast<LPCTSTR>(LockResource(shaderGlobal));
-	DWORD shaderSize = SizeofResource(NULL, shaderHandle);
-
-	std::vector<char> shader(shaderSize);
-	memcpy(shader.data(), shaderPtr, shaderSize);
-	UnlockResource(shaderGlobal);
-	FreeResource(shaderGlobal);
-	return shader;
+    std::ifstream file(filename, std::ios::ate | std::ios::binary);
+    if (!file.is_open()) {
+        throw std::runtime_error("failed to open file: " + filename);
+    }
+    size_t fileSize = (size_t)file.tellg();
+    std::vector<char> buffer(fileSize);
+    file.seekg(0);
+    file.read(buffer.data(), fileSize);
+    file.close();
+    return buffer;
 }
 
 //

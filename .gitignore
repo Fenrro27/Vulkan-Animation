@@ -70,3 +70,8 @@ cmake-build-*/
 Thumbs.db
 *.log
 *.tmp
+
+# vcpkg y CMake temporales
+/out/
+/vcpkg_installed/
+vcpkg-manifest-install.log
